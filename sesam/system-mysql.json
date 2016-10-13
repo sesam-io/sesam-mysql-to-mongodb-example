@@ -1,0 +1,8 @@
+{
+    "_id": "mysql",
+    "type": "system:mysql",
+    "database": "northwind",
+    "host": "$SECRET(mysql-host)",
+    "password": "$SECRET(mysql-password)",
+    "username": "$SECRET(mysql-username)"
+}

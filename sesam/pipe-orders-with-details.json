@@ -1,0 +1,58 @@
+{
+    "_id": "orders-with-details",
+    "type": "pipe",
+    "source": {
+        "type": "dataset",
+        "dataset": "orders"
+    },
+    "sink": {
+        "type": "dataset",
+        "dataset": "orders-with-details"
+    },
+    "transform": {
+        "type": "dtl",
+        "rules": {
+            "default": [
+                ["copy",
+                    ["list", "*", "_id"], "_*"],
+                    ["add", "Items",
+                        ["apply-hops", "order", {
+                            "datasets": ["order-details o"],
+                            "where": [
+                                ["eq", "_S.OrderID", "o.OrderID"]
+                            ]
+                        }]
+                    ],
+                    ["add", "ItemsCount",
+                        ["count", "_T.Items"]
+                    ],
+                    ["add", "ProductsCount",
+                        ["sum",
+                            ["map", "_.Quantity", "_T.Items"]
+                        ]
+                    ],
+                    ["add", "TotalPrice",
+                        ["sum",
+                            ["map", "_.TotalPrice", "_T.Items"]
+                        ]
+                    ]
+            ],
+            "order": [
+                ["copy",
+                    ["list", "*", "_id"],
+                    ["list", "_*", "OrderID"]
+                ],
+                ["add", "TotalPrice",
+                    ["multiply",
+                        ["multiply", "_S.Quantity", "_S.UnitPrice"],
+                        ["minus", "_S.Discount", 1]
+                    ]
+                ]
+            ]
+        }
+    },
+    "pump": {
+        "schedule_interval": 10,
+        "run_at_startup": true
+    }
+}

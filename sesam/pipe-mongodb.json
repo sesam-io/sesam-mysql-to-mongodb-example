@@ -1,0 +1,17 @@
+{
+    "_id": "orders-to-mongodb",
+    "type": "pipe",
+    "source": {
+        "type": "dataset",
+        "dataset": "orders-with-details"
+    },
+    "sink": {
+        "type": "json",
+        "system": "mongodb",
+        "url": "orders"
+    },
+    "pump": {
+        "schedule_interval": 10,
+        "run_at_startup": true
+    }
+}

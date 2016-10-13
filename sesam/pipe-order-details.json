@@ -1,0 +1,17 @@
+{
+    "_id": "order-details",
+    "type": "pipe",
+    "source": {
+        "type": "sql",
+        "system": "mysql",
+        "table": "Order Details"
+    },
+    "sink": {
+        "type": "dataset",
+        "dataset": "order-details"
+    },
+    "pump": {
+        "schedule_interval": 1800,
+        "run_at_startup": true
+    }
+}
