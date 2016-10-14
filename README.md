@@ -15,6 +15,13 @@ Before reading on you should have the following requirements:
 * [MySQL client](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)
 * [MongoDB client](https://docs.mongodb.com/getting-started/shell/client/)
 
+So lets get started by cloning this repository:
+
+    $ git clone git clone https://github.com/sesam-io/sesam-mysql-to-mongodb-example
+    $ cd sesam-mysql-to-mongodb-example
+    $ git submodule init
+    $ git submodule update
+
 First we need to set up the databases that Sesam will be connected to. We will
 spin up two docker containers with MySQL and MongoDB and one microservice
 container which we will look into more closely a bit later on.
