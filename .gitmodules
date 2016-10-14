@@ -1,0 +1,3 @@
+[submodule "mongodb-sink"]
+	path = mongodb-sink
+	url = https://github.com/giskou/mongodb-sink
