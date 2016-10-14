@@ -7,10 +7,9 @@ push the enriched data to a NoSQL document MongoDB database.
 Before reading on you should have the following requirements:
 * A running Sesam appliance with a valid license installed.
 * [Docker](https://docs.docker.com/engine/installation/)
-* [Sesam client]
-(https://docs.sesam.io/commandlineclient.html?highlight=sesamclient#installing-the-client)
-* MySQL client
-* MongoDB client
+* [Sesam client](https://docs.sesam.io/commandlineclient.html?highlight=sesamclient#installing-the-client)
+* [MySQL client](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)
+* [MongoDB client](https://docs.mongodb.com/getting-started/shell/client/)
 
 First we need to set up the databases that Sesam will be connected to. We will
 spin up two docker containers with MySQL and MongoDB and one microservice
@@ -76,7 +75,8 @@ We are ready when you can see the following messages:
 
 Since Sesam does not have a native way to talk to MongoDB we have created a
 microservice MongoDB sink that accepts JSON entities on an HTTP endpoint and
-adds them to MongoDB. The code of that service can be found here: [7]
+adds them to MongoDB. The code of that service can be found here:
+[mongodb-sink](https://github.com/giskou/mongodb-sink)
 
     $ docker run -d \
       --name=mongodb-sink \
@@ -100,7 +100,7 @@ You should get something like this:
 
 Edit the file `sesam/secrets.json` and replace the IP in `mysql-host` with the
 one you got for from the previous command.
-Do the same with file `sesam/system-mongodb-orders.json` and the `mongodb-url`.
+Do the same with file `sesam/system-mongodb-orders.json` and `mongodb-url`.
 
 We can now add the secrets in the Sesam secret storage.
 
@@ -337,7 +337,7 @@ The new elements look like this:
     }
 
 Now we want to add that data to the MongoDB store, so we will add one last pipe
-to push that data to the mongodb container we have running through the
+to push that data to the mongodb container we have running, through the
 microservice we created before.
 
     $ sesam add-pipes "[$(cat sesam/pipe-mongodb.json)]"
@@ -477,5 +477,4 @@ Now lets add a new order detail and see the magic happen!
     }
 
 The new order detail is added to the Items and all the other values have been
-updtated!
-
+updated!
