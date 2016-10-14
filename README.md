@@ -1,7 +1,7 @@
 #MySQL to MongoDB with Sesam
 
 In this tutorial we will explore some basic functionality of the Sesam data hub
-and use it to export data from a relational MySQL database, add some spice and
+and use it to export data from a relational MySQL database, add some spice, and
 push the enriched data to a NoSQL document MongoDB database.
 
 The final result will look something like the following diagram:
