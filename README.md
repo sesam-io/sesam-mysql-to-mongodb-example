@@ -9,7 +9,7 @@ The final result will look something like the following diagram:
 ![Sesam](diagram.png)
 
 Before reading on you should have the following requirements:
-* A running Sesam appliance with a valid license installed.
+* [A running Sesam appliance with a valid license installed](https://beta.sesam.io)
 * [Docker](https://docs.docker.com/engine/installation/)
 * [Sesam client](https://docs.sesam.io/commandlineclient.html?highlight=sesamclient#installing-the-client)
 * [MySQL client](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)
