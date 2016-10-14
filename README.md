@@ -97,12 +97,12 @@ adds them to MongoDB. The code of that service can be found here:
       giskou/mongodb-sink
 
 The microservice connects to the `MONGODB_HOST` database with the credentials
-from `MONGODB_USERNAME` and `MONGODB_PASSWORD` and created a new empty database
-with the name in `MONGODB_DATABASE`.
+from `MONGODB_USERNAME` and `MONGODB_PASSWORD` and creates a new empty database
+named `MONGODB_DATABASE`.
 
 It then accepts lists of JSON entities as POST data to `/<collection>` and
-inserts that entities to `<collection>`. If the collection does not exits it
-will be created.
+inserts/updates those entities into `<collection>`. If the collection does not
+exits it will be created.
 
 Now we will start interacting with the Sesam data hub.
 Since we are using the Sesam VirtualBox appliance we need to find the IP of the
