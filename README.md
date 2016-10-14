@@ -108,7 +108,7 @@ We can now add the secrets in the Sesam secret storage.
 
 Now lets create the mysql and mongodb systems in Sesam.
 
-    $ sesam add-systems "[$(cat sesam/system-mysql.json),$(cat sesam/system-mongodb-orders.json)]"
+    $ sesam add-systems "[$(cat sesam/system-mysql.json),$(cat sesam/system-mongodb.json)]"
 
 We will now add two pipes to pull the `Orders` and `Order Details` tables from
 MySQL into Sesam.
