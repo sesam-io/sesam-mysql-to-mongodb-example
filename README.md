@@ -88,6 +88,14 @@ adds them to MongoDB. The code of that service can be found here:
       -e MONGODB_DATABASE=northwind \
       giskou/mongodb-sink
 
+The microservice connects to the `MONGODB_HOST` database with the credentials
+from `MONGODB_USERNAME` and `MONGODB_PASSWORD` and created a new empty database
+with the name in `MONGODB_DATABASE`.
+
+It then accepts lists of JSON entities as POST data to `/<collection>` and
+inserts that entities to `<collection>`. If the collection does not exits it
+will be created.
+
 Now we will start interacting with the Sesam data hub.
 Since we are using the Sesam VirtualBox appliance we need to find the IP of the
 host machine that the VM can use to contact the databases we have there.
@@ -341,6 +349,11 @@ to push that data to the mongodb container we have running, through the
 microservice we created before.
 
     $ sesam add-pipes "[$(cat sesam/pipe-mongodb.json)]"
+
+The complete flow of all the systems and pipes can be seen in the following
+diagram:
+
+![MySQL-Sesam-MongoDB flow diagram](flow.png)
 
 We can now check MongoDB and see the new data:
 
